@@ -1,0 +1,494 @@
+/*=========== BODY ELEMENT ===========*/
+
+body {
+    background: #FFFFFF;
+    color: black;
+    display: grid;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    grid-template-rows: .8fr .5fr repeat(8, .8fr) .8fr .8fr .8fr .8fr 1.5fr;
+    grid-template-columns: 1.5fr 1fr repeat(8, minmax(100px,.8fr)) 1fr;
+    height: 100vh;
+    margin: 0 0;
+    border: 0;
+}
+
+/*=========== NAV ELEMENTS ===========*/
+
+body #nav {
+    background-color: #730C02;
+    color: white;
+    font-size: 2.5rem;
+    grid-row: 1 / 2;
+    grid-column: 3 / -2;
+    text-align: center;
+}
+
+body #nav-background {
+    border-left: 1px solid #0F0F0F;
+    background-color: #730C02;
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+}
+
+body #footer {
+    border-left: 1px solid #0F0F0F;
+    background-color: rgba(215,215,215,1);
+    grid-column: 1 / -1;
+    grid-row: -2 / -1;
+    height: 100%;
+    display: none;
+}
+
+/*=========== BUTTONS ===========*/
+
+body #button-background {
+    background-color: #730C02;
+    grid-row: 1 / -1;
+    grid-column: 1 / 1;
+}
+
+body .button {
+    font-size: .9rem;
+    border: none;
+    transition: 250ms;
+}
+
+body #add-hours-button {
+    background-color: rgba(0,0,0,0);
+    color: white;
+    grid-column: 1 / 1;
+    grid-row: 3 / 3;
+    text-align: center;
+} body #add-hours-button.enabled:hover {
+    background-color: #400601;
+    color: #D90B1C;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+body #delete-hours-button {
+    background-color: rgba(0,0,0,0);
+    color: white;
+    grid-column: 1 / 1;
+    grid-row: 4 / 4;
+    text-align: center;
+} body #delete-hours-button.enabled:hover {
+    background-color: #400601;
+    color: #D90B1C;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+body #save-schedule-button {
+    background-color: rgba(0,0,0,0);
+    color: white;
+    grid-column: 1 / 1;
+    grid-row: 5 / 5;
+    text-align: center;
+} body #save-schedule-button.enabled:hover {
+    background-color: #400601;
+    color: #D90B1C;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+body #new-employee-button {
+    background-color: rgba(0,0,0,0);
+    color: white;
+    grid-column: 1 / 1;
+    grid-row: -5 / -5;
+    text-align: center;
+} body #new-employee-button.enabled:hover {
+    background-color: #400601;
+    color: #D90B1C;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+body #edit-employee-button {
+    background-color: rgba(0,0,0,0);
+    color: white;
+    grid-column: 1 / 1;
+    grid-row: -4 / -4;
+    text-align: center;
+} body #edit-employee-button.enabled:hover {
+    background-color: #400601;
+    color: #D90B1C;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+body #delete-employee-button {
+    background-color: rgba(0,0,0,0);
+    color: white;
+    grid-column: 1 / 1;
+    grid-row: -3 / -3;
+    text-align: center;
+} body #delete-employee-button.enabled:hover {
+    background-color: #400601;
+    color: #D90B1C;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+body #employee-selection {
+    background-color: rgba(255,187,51,0);
+    border: none;
+    color: white;
+    grid-column: 1 / 1;
+    grid-row: 2 / 2;
+    text-align: center;
+} body #employee-selection:hover {
+    background-color: #400601;
+    color: #D90B1C;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+option {
+    color: black;
+    background-color: white;
+}
+/*=========== SCHEDULE ===========*/
+
+body #schedule1,#schedule2 {
+    background: rgb(64,6,1);
+    background: linear-gradient(0deg, rgba(64,6,1,1) 0%, rgba(115,12,2,1) 100%);
+    box-shadow: 0px 0px 3px rgba(66,66,66,0.5);
+    display: grid;
+    grid-area: 2 / 3 / -2 / -2;
+    grid-template-columns: .5fr repeat(6, 1fr);
+    grid-template-rows: 1.2fr repeat(29, 1fr);
+}
+
+
+/*=========== SCHEDULE HEADERS ===========*/
+
+body #empty-header {
+    border-left: 0;
+}
+
+body .weekday-headers {
+    background-color: #FFFFFF;
+    border-top: 0px solid #0F0F0F;
+    border-left: 1px solid #0F0F0F;
+    border-bottom: 2px solid #0F0F0F;
+    color: black;
+    grid-row: 1 / 1;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+body .weekday-headers p {
+    align-self: baseline;
+    display: flex;
+    flex-flow: column-reverse;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*=========== SCHEDULE BODY ===========*/
+
+body .half-hour-box {
+    background-color: azure;
+    border-left: 1px solid #0F0F0F;
+    color: #FFFFFF;
+} body .half-hour-box:hover {
+    cursor: pointer;
+}
+
+/*=========== DAY COLUMNS ===========*/
+
+body .key-column {
+    border-left: 0px solid #0F0F0F;
+    background-color: #FFFFFF;
+    color: black;
+    text-align: center;
+}
+
+body .monday-column {
+    background-color: #505050;
+}
+
+body .tuesday-column {
+    background-color: #505050;
+}
+
+body .wednesday-column {
+    background-color: #505050;
+}
+
+body .thursday-column {
+    background-color: #505050;
+}
+
+body .friday-column {
+    background-color: #505050;
+}
+
+body .saturday-column {
+    background-color: #505050;
+}
+
+/*=========== SPECIFIC DAYS ===========*/
+
+#saturday-column-2130 {
+    background-color: none;
+    color: rgba(0,0,0,0);
+    border-bottom: 2px solid #0F0F0F;
+} 
+
+#saturday-column-930 {
+    border-bottom: 2px solid #0F0F0F;
+} 
+
+#saturday-column-800, #saturday-column-830, #saturday-column-900, #saturday-column-930, #saturday-column-1730, #saturday-column-1800, #saturday-column-1830, #saturday-column-1900, #saturday-column-1930, #saturday-column-2000, #saturday-column-2030, #saturday-column-2100 {
+    background-color: none;
+    color: none;
+} 
+
+body .closed-box:hover {
+    cursor: auto;
+}
+
+/*=========== INPUT FORMS ===========*/
+
+body #dark-background {
+    background-color: rgba(0,0,0,.5);
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+}
+
+body #employee-form-area {
+    background-color: rgba(255,255,255,1);
+    border-radius: 5px;
+    margin: 10%;
+    grid-area: 2 / 3 / -2 / -2;
+    
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: 3fr repeat(4, minmax(10px,1fr)) 1fr 4fr;
+
+}
+
+body #employee-form-area #employee-form-header {
+    font-size: 1.8rem;
+    grid-area: 1 / 2 / 1 / 4;
+    margin: auto;
+    border-bottom: 1px solid #0F0F0F;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+body #employee-form-area .question {
+    font-size: 1.2rem;
+    grid-column: 2 / 2;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+body #employee-form-area .input {
+    font-size: 1.2rem;
+    grid-column: 3 / 3;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+body #employee-form-area .button {
+    margin: 0% 4%;
+} body #employee-form-area .button:hover {
+    cursor: pointer;
+}
+
+/*=========== NOTIFICATIONS ===========*/
+
+body #save-complete-notification {
+    margin: auto auto;
+    border-radius: 5px;
+    background: white;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    grid-column: 3 / -2;
+    grid-row: 1 / 3;
+    z-index: 2;
+    transition: 500ms;
+    font-size: 1.2rem;
+}
+
+/*=========== LOGIN/REGISTER ===========*/
+
+body #white-background {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    background-color: rgba(255,255,255,1);
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: 1fr minmax(0px, 500px) 1fr;
+    grid-template-rows: 1fr minmax(0px, 330px) 1fr;
+}
+
+body #white-background #white-background-header {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+
+    display: inline-block;
+    font-size: 2.5rem;
+    font-style: italic;
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+body #white-background #login-fail-text {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+
+    color: rgba(150,0,0,1);
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-top: auto;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+body #white-background #registration-fail-text {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+
+    color: rgba(150,0,0,1);
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-top: auto;
+    margin-bottom: 2rem;
+    text-align: center;
+    transition: .5s;
+}
+
+/*==== LOGIN AREA ====*/
+
+body #white-background #login-area {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+
+    background-color: rgba(215,215,215,1);
+    border: 2px solid rgba(205,205,205,1);
+    box-shadow: 0px 0px 5px rgba(66,66,66,0.2);
+    border-radius: .4rem;
+    color: #0F0F0F;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: .8fr auto auto 1fr .8fr;
+}
+
+body #white-background #login-area #login-area-header {
+    grid-row: 1 / -1;
+    grid-column: 2 / -2;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+body #white-background #login-area .login-text {
+    grid-column: 2 / 4;
+    display: inline-block;
+    margin-top: 1rem;
+} #login-user-text {
+    grid-row: 2 / 3;
+} #login-pass-text {
+    grid-row: 3 / 4;
+} #first-name-text {
+    grid-row: 4 / 5;
+} #last-name-text {
+    grid-row: 5 / 6;
+}
+
+body #white-background #login-area .login-input {
+    grid-column: 2 / 4;
+    height: fit-content;
+    padding: .2rem;
+    margin-top: 3rem;
+    font-size: 1rem;
+} #login-user-input {
+    grid-row: 2 / 3;
+} #login-pass-input {
+    grid-row: 3 / 4;
+} #first-name-input {
+    grid-row: 4 / 5;
+} #last-name-input {
+    grid-row: 5 / 6;
+}
+
+body #white-background #login-area .login-button {
+    height: fit-content;
+    width: fit-content;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    margin-top: auto;
+    margin-bottom: auto;
+} .login-button:hover {
+    cursor: pointer;    
+} #login-submit-button {
+    grid-row: 4 / 5;
+    grid-column: 2 / 3;
+} #login-register-button {
+    grid-row: 6 / 7;
+    grid-column: 2 / 3;
+}
+
+body #white-background #login-area #login-register-text {
+    font-size: .85rem;
+    grid-row: 4 / 5;
+    grid-column: 3 / 4;
+    text-align: end;
+    margin-top: auto;
+    margin-bottom: auto;
+} #register-link {
+    color: rgba(0,80,120,1);
+    border-bottom: 1px solid rgba(0,80,120,1);
+} #register-link:hover {
+    cursor: pointer;
+}
+
+body #white-background #login-area #back-to-login-text {
+    font-size: .85rem;
+    grid-row: 6 / 7;
+    grid-column: 3 / 4;
+    text-align: end;
+    margin-top: auto;
+    margin-bottom: auto;
+} #login-link {
+    color: rgba(0,80,120,1);
+    border-bottom: 1px solid rgba(0,80,120,1);
+} #login-link:hover {
+    cursor: pointer;
+}
+
+/*=========== ETC ===========*/
+
+#page-loading-cover {
+    grid-area: 1 / 1 / -1 / -1;
+    background-color: white;
+    z-index: 4;
+}
+
+body #logout-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    grid-column: 11 / 12;
+    grid-row: 1 / 1;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 1rem;
+} body #logout-button.enabled:hover {
+    background-color: #400601;
+    color: #D90B1C;
+    cursor: pointer;
+    transition: 200ms;
+}
