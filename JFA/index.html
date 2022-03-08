@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jump Flooding Algorithm</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app"  v-on:mouseup="updateWorkOnClickUp($event)">
+
+            <div v-if="picture.length > 0" id="picture-frame" :style="getFrameStyle()">
+                <div v-for="pixel in getPixels()" class="pixel-div" :style="getPixelStyle(pixel)"></div>
+            </div>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
