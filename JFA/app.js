@@ -1,5 +1,4 @@
 DEFAULT_COLOR_OPTIONS = ["#253140", "#344F59", "#3B7302", "#590202", "#8C6A03", "#314035"]; // ADD OR REMOVE COLORS AS NEEDED - code handles that
-RANDOM_GENERATED_COLORS = [];
 
 // PICTURES ARE SQUARES!!! made out of an array of arrays ie. [[123],[123],[123]]
 
@@ -8,6 +7,7 @@ var app = new Vue({
     data: {
         picture: [],
         seeds: [],
+        s_colors: [],
         JFA_ONLINE: false,
         JFA_K: -1,
     },
@@ -28,12 +28,14 @@ var app = new Vue({
                 console.error("cannot seed picture with '0' rows");
                 return;
             }
+            this.seeds = [];
+            this.s_colors = [];
             for (let i = 0; i < seeds; i++) {
                 let r = Math.floor(Math.random() * 256);
                 let g = Math.floor(Math.random() * 256);
                 let b = Math.floor(Math.random() * 256);
                 let random_color = "rgb(" + r + "," + g + "," + b + ")";
-                RANDOM_GENERATED_COLORS.push(random_color);
+                this.s_colors.push(random_color);
                 let newseed = [];
                 let x = Math.floor(Math.random() * this.picture.length);
                 let y = Math.floor(Math.random() * this.picture[0].length);
@@ -56,18 +58,20 @@ var app = new Vue({
             this.JFA_K = this.picture.length/2; // initial K value of N/2
             this.JFA_ONLINE = true;
         },
-        iterateJFA: function() {
+        iterateJFA: function(verbose=false) {
             for (let x = 0; x < this.picture.length; x++) {
                 for (let y = 0; y < this.picture[0].length; y++) {
                     // for every pixel
-                    let p = this.getPixel(x, y);
                     for(let i = -this.JFA_K; i <= this.JFA_K; i += this.JFA_K) {
                         for(let j = -this.JFA_K; j <= this.JFA_K; j += this.JFA_K) {
+                            let p = this.getPixel(x, y);
+                            if (verbose) console.log(i, j);
                             // for each neighbor q at (x+i, y+j)
                             let q = this.getPixel(x+i, y+j);
                             if (!this.isColorDefined(p) && this.isColorDefined(q)) { 
                                 // if p is undefined and q is colored
                                 // change p's color to q's
+                                if (verbose) console.log("updated", x, "x", y, "y to", this.s_colors[q])
                                 this.setPixel(x, y, q); 
                             } else if (this.isColorDefined(p) && this.isColorDefined(q)) {
                                 // check p's distance from both seeds
@@ -119,7 +123,7 @@ var app = new Vue({
             return style;
         },
         getPixelStyle: function(seed) {
-            let color = RANDOM_GENERATED_COLORS[seed];
+            let color = this.s_colors[seed];
             let style = {backgroundColor: color};
             return style;
         },
