@@ -71,7 +71,7 @@ var app = new Vue({
                             if (!this.isColorDefined(p) && this.isColorDefined(q)) { 
                                 // if p is undefined and q is colored
                                 // change p's color to q's
-                                if (verbose) console.log("updated", x, "x", y, "y to", this.s_colors[q])
+                                if (verbose) console.log("updated", x, "x", y, "y to", this.s_colors[q]);
                                 this.setPixel(x, y, q); 
                             } else if (this.isColorDefined(p) && this.isColorDefined(q)) {
                                 // check p's distance from both seeds
