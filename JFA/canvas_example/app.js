@@ -66,6 +66,10 @@ var app = new Vue({
             this.seedsPlanted = false;
             this.JFA_ONLINE = false;
         },
+        onUpdateDimensions: function() {
+            this.canvas.height = this.newCanvasWidth;
+            this.canvas.width = this.newCanvasHeight;
+        },
         seedPicture: function(seeds=2) {
             this.resetCanvasClick();
             this.seeds = [];
