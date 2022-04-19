@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+    --darkestest_gray: #121212;
+    --darkest_gray: #222222;
+    --darker_gray: #2a2a2a;
+    --dark_gray: #333333;
+    --gray: #444444;
+
+    --text_gray: #aaaaaa;
+    --text_light_gray: #cccccc;
+
+    --disabled-green: #276827;
+    --green: #31d631;
+    --highlighted-green: #81ff81;
+    --disabled-red: #702727;
+    --red: #ff3e3e;
+    --highlighted-red: #ff5e5e;
+    --disabled-orange: #804f21;
+    --orange: #ff9028;
+    --highlighted-orange: #fdb470;
+
+    --invalid-red: #ff0000;
+
+    --global-shadow: 3px;
+}
+
+body {
+    margin: 0;
+    font-family: "Open Sans";
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: auto 600px auto;
+    grid-template-rows: auto 600px auto;
+    background-color: var(azure);
+}
+
+body #app {
+    grid-area: 2 / 2 / -2 / -2;
+}
+
+#picture-frame {
+    background-color: var(--gray);
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: repeat(40, 1fr);
+    grid-template-columns: repeat(40, 1fr);
+}
+
+.pixel-div {
+    border: 1px solid rgba(0,0,0,.1);
+}
