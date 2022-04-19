@@ -1,4 +1,4 @@
-const SERVER_ROOT_URL = "https://color-click-racer.herokuapp.com/";
+const SERVER_ROOT_URL = "ws://color-click-racer.herokuapp.com/";
 
 var app = new Vue({
     el: '#app',
@@ -75,7 +75,7 @@ var app = new Vue({
         },
         // connects and handles socket
         connectWS: function() {
-            this.socket = new WebSocket("ws://localhost:4200");
+            this.socket = new WebSocket(SERVER_ROOT_URL);
             this.socket.onmessage = (event) => {
                 let data = JSON.parse(event.data);
                 switch (data.action) {
