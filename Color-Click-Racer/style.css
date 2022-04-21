@@ -85,6 +85,26 @@ body #app #navbar-area #title {
     font-size: 3rem;
 }
 
+body #app #navbar-area #buttons-area {
+    grid-area: 1 / 3 / -1 / 4;
+
+    text-align: center;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+} body #app #navbar-area #buttons-area button {
+    width: 35%;
+    margin: 0rem 0rem 0rem auto;
+    background-color: var(--theme-dark1);
+    border: 1px solid var(--theme-dark2);
+    color: inherit;
+    transition: .25s;
+} body #app #navbar-area #buttons-area button:hover {
+    cursor: pointer;
+    background-color: var(--theme-main);
+    border: 2px solid var(--theme-dark1);
+    transition: .25s;
+}
 
 body #app #bottom-margin {
     grid-area: -2 / 1 / -1 / -1;
