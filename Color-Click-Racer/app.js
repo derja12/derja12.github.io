@@ -78,6 +78,7 @@ var app = new Vue({
             this.socket = new WebSocket(SERVER_ROOT_URL);
             this.socket.onmessage = (event) => {
                 let data = JSON.parse(event.data);
+                // {action: "update_likes", likes_object: {id:#,id:#...}}
                 switch (data.action) {
                     case "update_points":
                         this.win_color = "";
@@ -100,6 +101,18 @@ var app = new Vue({
                         console.log("action not recognized:", data.action)
                 }
             }
+        },
+        resetStatsClick: function() {
+            let message = {
+                action: "reset_stats"
+            }
+            this.socket.send(JSON.stringify(message))
+        },
+        resetPointsClick: function() {
+            let message = {
+                action: "reset_points"
+            }
+            this.socket.send(JSON.stringify(message))
         }
     },
     computed: {
