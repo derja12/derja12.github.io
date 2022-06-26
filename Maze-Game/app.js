@@ -107,7 +107,7 @@ var app = new Vue({
                 width: numberToPixel(x2 - x1),
                 height: numberToPixel(y2 - y1),
                 left: numberToPixel(x1),
-                bottom: numberToPixel(x1),
+                bottom: numberToPixel(y1),
                 backgroundColor: "rgba(84, 26, 80, .5)",
             }
         },
