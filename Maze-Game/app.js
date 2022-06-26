@@ -104,10 +104,10 @@ var app = new Vue({
             }
             this.newWall = {
                 position: 'absolute',
-                width: String(x2 - x1) + "px",
-                height: String(y2 - y1) + "px",
-                left: x1,
-                bottom: y1,
+                width: numberToPixel(x2 - x1),
+                height: numberToPixel(y2 - y1),
+                left: numberToPixel(x1),
+                bottom: numberToPixel(x1),
                 backgroundColor: "rgba(84, 26, 80, .5)",
             }
         },
@@ -128,10 +128,10 @@ var app = new Vue({
             }
             this.walls.push({
                 position: 'absolute',
-                width: String(x2 - x1) + "px",
-                height: String(y2 - y1) + "px",
-                left: String(x1) + "px",
-                bottom: String(y1) + "px",
+                width: numberToPixel(x2 - x1),
+                height: numberToPixel(y2 - y1),
+                left: numberToPixel(x1),
+                bottom: numberToPixel(y1),
                 backgroundColor: "rgba(84, 26, 80, 1)",
             })
             this.newWall = {};
