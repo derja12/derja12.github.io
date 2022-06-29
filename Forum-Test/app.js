@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://forum2022.codeschool.cloud";
+const BACKEND_URL = "https://forum2022.codeschool.cloud";
 
 var app = new Vue({
     el: "#app",
