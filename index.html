@@ -5,7 +5,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-    <title>Derek Jacketta - Projects</title>
+    <title>Derek Jacketta - Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,70 +13,117 @@
         <v-app>          
 
             <!-- Top bar with title -->
-            <v-app-bar app class="light-blue lighten-4 black--text">           
-                <v-toolbar-title>{{ title }}</v-toolbar-title>
+            <v-app-bar app class="grey--text text--lighten-1 blue-grey darken-4 black--text">           
+                <v-toolbar-title class="text-h5">{{ title }}</v-toolbar-title>
             </v-app-bar>
 
             <!-- Page Area -->
-            <v-main class="light-blue lighten-5">
+            <v-main class="grey darken-4">
                 <v-container>
-                    <v-row
-                        >
+                    <v-row>
                         <template 
-                            v-for="year in Object.keys(links)">
+                            v-for="(year, row_index) in Object.keys(links).reverse()">
                             <v-col
                                 :key="year"
                                 class="mt-2"
                                 cols="12"
                                 >
-                                <strong class="light-blue--text text--darken-3">{{ year }}</strong>
-                                <v-divider></v-divider>
+                                <strong class="grey--text text--lighten-1 text-h6">{{ year }}</strong>
+                                <v-divider class="grey darken-3"></v-divider>
                             </v-col>
             
                             <v-col
-                                v-for="(obj, index) in links[year]"
-                                :key="`${year} ${index}`"
+                                v-for="(obj, object_index) in links[year]"
+                                :key="`${year} ${object_index}`"
                                 :cols="links[year].length"
                                 md="3"
                                 >
-                                <!-- <v-badge overlap color="rgb(55, 55, 55)" icon="mdi-github"> -->
+
+                                <!-- ============== Project Card ============== -->
                                 <v-card 
-                                    height="fit-content" 
-                                    class="overflow-hidden pb-2">
+                                    elevation="1"
+                                    height="400" 
+                                    class="overflow-hidden pb-2 blue-grey darken-3">
+
+                                    <!-- ==== Image ==== -->
                                     <v-img 
                                         :src="obj.image"
                                         position="top"
                                         width="inherit"
                                         height="140"
-                                        class="d-flex align-end">
+                                        >
                                     </v-img>
+
+                                    <!-- ==== Title ==== -->
                                     <v-card-title
-                                        class="grey--text text--darken-3 text-subtitle-2"
+                                        class="grey--text text--lighten-3 text-subtitle-1"
                                         style="word-break: keep-all;"
                                     >
                                         {{ obj.name }}
                                     </v-card-title>
-                                    <v-divider class="mx-4 mt-n4 mb-4"></v-divider>
+
+                                    <v-divider class="blue-grey darken-2 mx-4 mt-n4"></v-divider>
+
+                                    <!-- ==== Description ==== -->
+                                    <v-card-text style="height: 150px;" class="grey--text text--lighten-1 overflow-hidden">
+                                        {{ obj.desc }}
+                                    </v-card-text>
+
+                                    <!-- ==== Buttons ==== -->
                                     <v-card-actions
-                                        class="d-flex justify-space-around"
+                                        class="d-flex justify-space-around mt-n4"
                                     >
-                                        <a :href="obj.link" target="_blank">
+                                        <a v-show="Object.keys(obj).includes('link')" :href="obj.link" target="_blank">
                                             <v-btn
-                                                color="grey lighten-2"
+                                                color="grey--text text--lighten-2 grey darken-2"
                                             >
-                                                Visit
+                                                <v-icon>mdi-web</v-icon>
                                             </v-btn>
                                         </a>
-                                        <a :href="obj.github" target="_blank">
+                                        <a v-show="Object.keys(obj).includes('github')" :href="obj.github" target="_blank">
                                             <v-btn
-                                                color="grey lighten-2"
+                                                color="grey--text text--lighten-2 grey darken-2"
                                             >
                                                 <v-icon>mdi-github</v-icon>
                                             </v-btn>
                                         </a>
                                     </v-card-actions>
                                 </v-card>
-                                <!-- </v-badge> -->
+
+                                <!-- ==== Types ==== -->
+                                <v-expansion-panels tile accordion elevation="0" class="mt-n2 mb-6">
+                                    <v-expansion-panel class="grey darken-3" elevation="0">
+                                        <v-expansion-panel-header class="grey--text text--lighten-1 grey darken-3 font-weight-bold" elevation="0">
+                                            <!-- == Type Icons == -->
+                                            Project Information
+                                            <v-icon class="grey--text text--lighten-1">
+                                                mdi-information
+                                            </v-icon>
+                                        </v-expansion-panel-header>
+                                        <v-expansion-panel-content>
+                                            <!-- == made_for == -->
+                                            <div v-if="Object.keys(obj).includes('made_for')" class="grey--text text--lighten-1 grey darken-3">
+                                                Made for: <span v-for="(mf,index) in obj.made_for">
+                                                    <strong>{{ mf }}</strong><span v-if="index < obj.made_for.length-1">, </span>
+                                                </span>
+                                            </div>
+
+                                            <!-- == projects == -->
+                                            <div v-if="Object.keys(obj).includes('projects')" class="grey--text text--lighten-1 grey darken-3">
+                                                Project Type: <span v-for="(project,index) in obj.projects">
+                                                    <strong>{{ project }}</strong><span v-if="index < obj.projects.length-1">, </span>
+                                                </span>
+                                            </div>
+
+                                            <!-- == languages == -->
+                                            <div v-if="Object.keys(obj).includes('languages')" class="grey--text text--lighten-1 grey darken-3">
+                                                Languages: <span v-for="(lang,index) in obj.languages">
+                                                    <strong>{{ lang }}</strong><span v-if="index < obj.languages.length-1">, </span>
+                                                </span>
+                                            </div>
+                                        </v-expansion-panel-content>
+                                    </v-expansion-panel>
+                                </v-expansion-panels>
                             </v-col>
                         </template>
                     </v-row>
@@ -84,21 +131,6 @@
             </v-main>
         </v-app>
     </div>
-    <!-- <div id="wrapper">
-        <h1>Derek Jacketta - Projects</h1>
-        <div id="link-area">
-            <a href="./3200-Final">Labbie Hours (Schedule Master - Version 1) - Fall 2021</a>
-            <br>
-            <a href="https://schedule-m.herokuapp.com/">Schedule Master - Version 3</a>
-            <br>
-            <a href="./Maze-Game">Maze Game Demo</a>
-            <br>
-            <a href="./Color-Click-Racer">Color Click Racer</a>
-            <br>
-            <a href="./JFA">Voronoi Diagrams - Jump Flood Algorithm</a>
-            <br>
-        </div>
-    </div> -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="app.js"></script>
